@@ -12,16 +12,20 @@ app.use(express.urlencoded({extended: true}))
 
 
 app.get('/hello', (req, res)=>{
+    console.log("Received a GET request on /hello");
     res.status(201).send('<h1>Hello Express JS</h1>');
 });
 
 app.get('/user', (req, res)=>{
     const {firstname, lastname} = req.query;
+    console.log(`Received a GET request on /user with firstname: 
+    ${firstname} and lastname: ${lastname}`);
     res.json({firstname, lastname});
 });
 
 app.post('/user/:firstname/:lastname', (req, res)=> {
     const{firstname, lastname} = req.params;
+    console.log(`Received a POST request on/user with firstname: ${firstname} and lastname: ${lastname}`);
     res.json({firstname, lastname});
 });
 
